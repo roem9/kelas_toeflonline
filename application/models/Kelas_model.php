@@ -39,7 +39,7 @@ class Kelas_model extends MY_Model {
         $this->db->select("b.nama_pertemuan, a.id_pertemuan, latihan, b.presensi, a.presensi as status_presensi, catatan");
         $this->db->from("pertemuan_kelas_member as a");
         $this->db->join("pertemuan as b", "a.id_pertemuan = b.id_pertemuan");
-        $this->db->where("a.id_kelas", $kelas['id_kelas']);
+        $this->db->where(["a.id_kelas" => $kelas['id_kelas'], "id_member" => $id_member]);
         $query = $this->db->get()->result_array();
 
         $data['pertemuan'] = [];
