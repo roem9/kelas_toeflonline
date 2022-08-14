@@ -90,7 +90,7 @@
 
         public function logout(){
             // delete cookie dan session
-            delete_cookie('peserta');
+            delete_cookie('peserta_toefl_online');
             $this->session->sess_destroy();
             redirect('auth');
         }

@@ -959,14 +959,17 @@ class Kelas extends MY_Controller {
 
         $pertemuan_selanjutnya = $this->kelas->get_one("pertemuan", ["id_program" => $pertemuan['id_program'], "urutan" => $pertemuan['urutan']+1]);
 
-        $this->kelas->add_data("pertemuan_kelas_member",[
-            "id_kelas" => $id_kelas,
-            "id_pertemuan" => $pertemuan_selanjutnya['id_pertemuan'],
-            "id_member" => $id_member,
-            "selesai" => "Belum Selesai"
-        ]);
+        if($pertemuan_selanjutnya){
+            $this->kelas->add_data("pertemuan_kelas_member",[
+                "id_kelas" => $id_kelas,
+                "id_pertemuan" => $pertemuan_selanjutnya['id_pertemuan'],
+                "id_member" => $id_member,
+                "selesai" => "Belum Selesai"
+            ]);
+        }
 
         $this->pertemuan(md5($id_kelas), $id_pertemuan);
+
     }
 
     public function sertifikat($id){

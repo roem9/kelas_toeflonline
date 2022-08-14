@@ -8,7 +8,7 @@
         <div class="col-12 col-lg-auto mt-3 mt-lg-0">
         <ul class="list-inline list-inline-dots mb-0">
             <li class="list-inline-item">
-            &copy; 2021 sisting.id
+            Powered By <a href="http://sisting.id" target="_blank">sisting.id</a>
         </ul>
         </div>
     </div>

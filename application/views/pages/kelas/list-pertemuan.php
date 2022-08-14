@@ -23,7 +23,7 @@
                     
                     <!-- sertifikat  -->
                     <?php if($kelas_member['sertifikat'] == 1) :?>
-                        <a href="<?= base_url()?>kelas/sertifikat/<?= md5($kelas_member['id'])?>" target="_blank" class="btn btn-md btn-success w-100 mb-3"><?= tablerIcon("certificate", "me-1")?> Sertifikat</a>
+                        <a href="<?= base_url()?>kelas/sertifikat/<?= md5($kelas_member['id'])?>" target="_blank" class="btn btn-md btn-success w-100 mb-3"><?= tablerIcon("certificate", "me-1")?> Cetak Sertifikat</a>
                     <?php endif;?>
 
                     <?php if($pertemuan) :?>

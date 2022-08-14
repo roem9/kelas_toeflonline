@@ -16,9 +16,11 @@
                         <div class="page-header d-print-none">
                             <div class="row align-items-center">
                                 <div class="col">
-                                <h3>
-                                    <?= $title?>
-                                </h3>
+                                    <center>
+                                        <h3>
+                                            <?= $title?>
+                                        </h3>
+                                    </center>
                                 </div>
                             </div>
                         </div>

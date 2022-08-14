@@ -8,13 +8,15 @@
             <div class="page-wrapper" id="">
                 <div class="page-body">
                     <div class="container-xl">
-                        <a href="<?= base_url()?>kelas/pertemuan/<?= md5($kelas['id_kelas'])?>/<?= md5($pertemuan['id_pertemuan'])?>" class="btn btn-success"><?= tablerIcon("chevrons-left", "me-1")?> Kembali</a>
+                        <a href="<?= base_url()?>kelas/pertemuan/<?= md5($kelas['id_kelas'])?>/<?= md5($pertemuan['id_pertemuan'])?>" class="btn btn-success"><?= tablerIcon("notebook", "me-1")?> Materi</a>
                         <div class="page-header d-print-none">
                             <div class="row align-items-center">
                                 <div class="col">
-                                <h3>
-                                    <?= $title?>
-                                </h3>
+                                    <center>
+                                        <h3>
+                                            <?= $title?>
+                                        </h3>
+                                    </center>
                                 </div>
                             </div>
                         </div>

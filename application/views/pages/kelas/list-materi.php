@@ -10,9 +10,11 @@
                 <div class="page-header d-print-none">
                 <div class="row align-items-center">
                     <div class="col">
-                    <h3>
-                        <?= $title?>
-                    </h3>
+                        <center>
+                            <h3>
+                                <?= $title?>
+                            </h3>
+                        </center>
                     </div>
                 </div>
                 </div>
@@ -24,6 +26,12 @@
                         $audio = 1;
                         $image = 1;
                     ?>
+                        <?php if($materi) :?>
+                            <div class="mb-3">
+                                <a href="javascript:void(0)" class="btn bg-blue-lt w-100 text-light">Materi</a>
+                            </div>
+                        <?php endif;?>
+
                         <?php foreach ($materi as $materi) :?>
                             <?php if($materi['item'] == "petunjuk") :?>
                                 <?php if($materi['penulisan'] == "RTL") :
@@ -71,8 +79,13 @@
                         <?php endforeach;?>
 
                         <?php if($pertemuan['latihan'] != "Tidak Ada Latihan") :?>
+
                             <?php $nilai = nilai_latihan($kelas['id_kelas'], $pertemuan['id_pertemuan'], $this->session->userdata("id_member"))?>
                             <?php if($pertemuan['latihan'] == "Input Manual") :?>
+                                <div class="mb-3">
+                                    <a href="javascript:void(0)" class="btn bg-yellow-lt w-100 text-light">Latihan</a>
+                                </div>
+
                                 <?php if(is_numeric($nilai) == 1) :?>
                                     <div class="card mb-3">
                                         <div class="card-body">
@@ -93,6 +106,10 @@
                                     </div>
                                 <?php endif;?>
                             <?php elseif($pertemuan['latihan'] == "Post Test Listening" || $pertemuan['latihan'] == "Post Test Structure" || $pertemuan['latihan'] == "Post Test Reading" || $pertemuan['latihan'] == "Pre / Mid Test Listening" || $pertemuan['latihan'] == "Pre / Mid Test Structure" || $pertemuan['latihan'] == "Pre / Mid Test Reading") :?>
+                                <div class="mb-3">
+                                    <a href="javascript:void(0)" class="btn bg-yellow-lt w-100 text-light">Tes</a>
+                                </div>
+
                                 <?php
                                     if($pertemuan['latihan'] == "Pre / Mid Test Listening" || $pertemuan['latihan'] == "Post Test Listening"){
                                         $poin_maksimal = poin_toefl("Listening", jumlah_soal($pertemuan['id_pertemuan']));
@@ -104,19 +121,22 @@
                                 ?>
                                 <div class="card mb-3">
                                     <div class="card-body">
-                                        <p>kerjakan latihan melalui link berikut</p>
+                                        <p>kerjakan tes melalui link berikut</p>
                                         <div class="d-flex justify-content-center">
-                                            <a href="<?= base_url()?>kelas/latihan/<?= md5($kelas['id_kelas'])?>/<?= md5($pertemuan['id_pertemuan'])?>" class="btn btn-success w-100 me-2 btnLoading">Latihan</a>
+                                            <a href="<?= base_url()?>kelas/latihan/<?= md5($kelas['id_kelas'])?>/<?= md5($pertemuan['id_pertemuan'])?>" class="btn bg-yellow text-light w-100 me-2 btnLoading">Mulai Tes</a>
                                             <a href="javascript:void(0)" class="btn btn-outline-success"><?= $nilai?> / <?= $poin_maksimal?></a>
                                         </div>
                                     </div>
                                 </div>
                                 <?php if(is_numeric($nilai) == 1) :?>
                                     <?php if($pembahasan) :?>
-                                        <div class="card mb-3">
+                                        <!-- <div class="card mb-3">
                                             <div class="card-body">
                                                 <h3>Pembahasan</h3>
                                             </div>
+                                        </div> -->
+                                        <div class="mb-3">
+                                            <a href="javascript:void(0)" class="btn bg-green-lt w-100 text-light">Materi</a>
                                         </div>
                                         <?php foreach ($pembahasan as $pembahasan) :?>
                                             <?php if($pembahasan['item'] == "video pembahasan") :
@@ -140,21 +160,29 @@
                                     <?php endif;?>
                                 <?php endif;?>
                             <?php else :?>
+                                <div class="mb-3">
+                                    <a href="javascript:void(0)" class="btn bg-yellow-lt w-100 text-light">Latihan</a>
+                                </div>
+                                
                                 <div class="card mb-3">
                                     <div class="card-body">
                                         <p>kerjakan latihan melalui link berikut</p>
                                         <div class="d-flex justify-content-center">
-                                            <a href="<?= base_url()?>kelas/latihan/<?= md5($kelas['id_kelas'])?>/<?= md5($pertemuan['id_pertemuan'])?>" class="btn btn-success w-100 me-2 btnLoading">Latihan</a>
+                                            <a href="<?= base_url()?>kelas/latihan/<?= md5($kelas['id_kelas'])?>/<?= md5($pertemuan['id_pertemuan'])?>" class="btn bg-yellow text-light w-100 me-2 btnLoading">Mulai Latihan</a>
                                             <a href="javascript:void(0)" class="btn btn-outline-success"><?= $nilai?> / <?= jumlah_soal($pertemuan['id_pertemuan'])?></a>
                                         </div>
                                     </div>
                                 </div>
                                 <?php if(is_numeric($nilai) == 1) :?>
                                     <?php if($pembahasan) :?>
-                                        <div class="card mb-3">
+                                        <!-- <div class="card mb-3">
                                             <div class="card-body">
                                                 <h3>Pembahasan</h3>
                                             </div>
+                                        </div> -->
+                                        
+                                        <div class="mb-3">
+                                            <a href="javascript:void(0)" class="btn bg-green-lt w-100 text-light">Pembahasan</a>
                                         </div>
                                         <?php foreach ($pembahasan as $pembahasan) :?>
                                             <?php if($pembahasan['item'] == "video pembahasan") :
