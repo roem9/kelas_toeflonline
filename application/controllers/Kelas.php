@@ -47,6 +47,7 @@ class Kelas extends MY_Controller {
         $data['kelas'] = $kelas;
         $data['pertemuan'] = $pertemuan;
         $data['pertemuan_kelas'] = $this->kelas->get_one("pertemuan_kelas_member", ["md5(id_kelas)" => $id_kelas, "md5(id_pertemuan)" => $id_pertemuan, "id_member" => $id_member]);
+        $data['kelas_member'] = $this->kelas->get_one("kelas_member", ["md5(id_kelas)" => $id_kelas, "id_member" => $id_member]);
 
         $data['folder_admin'] = $this->kelas->get_one("config", ["field" => "folder_admin"]);
         
@@ -511,9 +512,56 @@ class Kelas extends MY_Controller {
         }
     }
 
+    public function inbox($id_kelas){
+        $link_back = $_SERVER['HTTP_REFERER'];
+        $id_member = $this->session->userdata("id_member");
+        
+        // edit baca member = 1
+        $this->kelas->edit_data("kelas_member", ["id_member" => $id_member, "md5(id_kelas)" => $id_kelas], ["baca_member" => 1, "refresh_member" => 1]);
+
+        // ubah link back 
+        $this->kelas->edit_data("member", ["id_member" => $id_member], ["link_back" => $link_back]);
+
+        $data = $this->kelas->id($id_kelas);
+        $data['member'] = $this->kelas->get_one("member", ["id_member" => $id_member]);
+
+        $data['js'] = [
+            "ajax.js",
+            "function.js",
+            "helper.js",
+            "modules/inbox.js",
+            "load_data/inbox_reload.js",
+        ];
+
+        $this->load->view("pages/inbox/inbox", $data);
+    }
+
     public function get_all_kelas(){
         $data = $this->kelas->get_all_kelas();
         echo json_encode($data);
+    }
+
+    public function get_all_inbox(){
+        $data = $this->kelas->get_all_inbox();
+        echo json_encode($data);
+    }
+
+    public function input_inbox(){
+        $data = $this->kelas->input_inbox();
+        echo json_encode($data);
+    }
+
+    public function check_msg(){
+        $id_kelas = $this->input->post("id_kelas");
+        $id_member = $this->input->post("id_member");
+
+        $msg = $this->kelas->get_one("kelas_member", ["id_kelas" => $id_kelas, "id_member" => $id_member]);
+        if($msg['refresh_member'] == 0){
+            $this->kelas->edit_data("kelas_member", ["id_kelas" => $id_kelas, "id_member" => $id_member], ["refresh_member" => 1, "baca_member" => 1]);
+            echo json_encode(1);
+        } else {
+            echo json_encode(0);
+        }
     }
 
     public function add_jawaban_test(){

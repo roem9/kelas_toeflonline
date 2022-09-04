@@ -20,6 +20,8 @@
             <div class="page-body">
                 <div class="container-xl">
                     <a href="<?= base_url()?>kelas/" class="btn btn-secondary mb-3 btnLoading"><?= tablerIcon("chevrons-left", "me-1")?> Kembali</a>
+
+                    <!-- <?= $link?> -->
                     
                     <!-- sertifikat  -->
                     <?php if($kelas_member['sertifikat'] == 1) :?>
@@ -48,6 +50,17 @@
                             <h3>maaf materi belum diupload</h3>
                         </div>
                     <?php endif;?>
+                </div>
+                
+                <?php 
+                    if($kelas_member['baca_member'] == 0) $class = "blink_me";
+                    else $class = "";
+                ?>
+
+                <div class="<?= $class;?>">
+                    <a href="<?= base_url()?>kelas/inbox/<?= md5($kelas['id_kelas'])?>" class="float" data-toggle="tooltip" data-placement="top" title="Ruang Diskusi">
+                        <?= iconFloat("message");?>
+                    </a>
                 </div>
             </div>
             <?php $this->load->view("_partials/footer-bar")?>

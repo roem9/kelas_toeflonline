@@ -215,6 +215,17 @@
                             <h3>maaf materi belum diupload</h3>
                         </div>
                     <?php endif;?>
+
+                    <?php 
+                        if($kelas_member['baca_member'] == 0) $class = "blink_me";
+                        else $class = "";
+                    ?>
+
+                    <div class="<?= $class;?>">
+                        <a href="<?= base_url()?>kelas/inbox/<?= md5($kelas['id_kelas'])?>" class="float" data-toggle="tooltip" data-placement="top" title="Ruang Diskusi">
+                            <?= iconFloat("message");?>
+                        </a>
+                    </div>
                 </div>
             </div>
             <?php $this->load->view("_partials/footer-bar")?>

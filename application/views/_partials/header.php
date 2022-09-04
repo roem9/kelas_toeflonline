@@ -30,7 +30,7 @@
     <link href="<?= base_url()?>assets/css/demo.min.css" rel="stylesheet"/>
     <link href="<?= base_url()?>assets/tabler-icons-1.39.1/iconfont/tabler-icons.min.css" rel="stylesheet"/>
 
-    <link href="<?= base_url()?>assets/mycss/style.css" rel="stylesheet"/>
+    <link href="<?= base_url()?>assets/mystyle/mystyle.css" rel="stylesheet"/>
 
     <script type="text/javascript" src="<?= base_url()?>assets/ckeditor/ckeditor.js"></script>
     <!-- <script src="//cdn.ckeditor.com/4.16.0/full/ckeditor.js"></script> -->

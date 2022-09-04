@@ -28,6 +28,35 @@ class Kelas_model extends MY_Model {
         return $data;
     }
 
+    public function get_all_inbox(){
+        $id_member = $this->session->userdata("id_member");
+        $id_kelas = $this->input->post("id_kelas");
+        
+        $data = $this->get_all("inbox_kelas", ["md5(id_kelas)" => $id_kelas, "id_member" => $id_member], "id", "DESC");
+
+        return $data;
+    }
+
+    public function input_inbox(){
+        $data = [
+            "id_member" => $this->input->post("id_member"),
+            "id_kelas" => $this->input->post("id_kelas"),
+            "text" => $this->input->post("text"),
+            "tabel" => $this->input->post("tabel")
+        ];
+
+        $this->edit_data("kelas_member", ["id_member" => $data['id_member'], "id_kelas" => $data['id_kelas']], [
+            "baca_member" => 1,
+            "baca_admin" => 0,
+            "refresh_member" => 1,
+            "refresh_admin" => 0
+        ]);
+
+        $query = $this->add_data("inbox_kelas", $data);
+        if($query) return 1;
+        else return 0;
+    }
+
     public function id($id_kelas){
         $id_member = $this->session->userdata("id_member");
         $kelas = $this->kelas->get_one("kelas", ["md5(id_kelas)" => $id_kelas]);

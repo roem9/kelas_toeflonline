@@ -6,6 +6,13 @@
             </svg>';
     }
 
+    function iconFloat($icon, $margin = "", $width = 30){
+        return '
+            <svg width="'.$width.'" height="'.$width.'">
+                <use xlink:href="'.base_url().'assets/tabler-icons-1.39.1/tabler-sprite.svg#tabler-'.$icon.'" />
+            </svg>';
+    }
+
     function hari_indo($hari){
         switch($hari){
             case 'Sun':
