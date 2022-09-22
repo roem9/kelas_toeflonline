@@ -10,7 +10,28 @@
             <div class="page-header d-print-none">
                 <div class="row align-items-center">
                 <div class="col">
-                    <center><h3><?= $title?></h3></center>
+                    <center>
+                        <h2>Ruang Diskusi</h2>
+                        <h3><?= $title?></h3>
+
+                        <div class="d-flex justify-content-center">
+                            <div class="row">
+                                <div class="col-auto">
+                                    <span class="avatar" style="background-image: url(<?= base_url()?>assets/img/foto_mentor.png)"></span>
+                                </div>
+                                <div class="col">
+                                <div class="text-truncate" style="text-align:left">
+                                    <i>
+                                        Silakan bertanya kepada kami. <br>
+                                        Kami siap membantu Anda!
+                                    </i>
+                                </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </center>
+
                 </div>
                 <!-- Page title actions -->
                 </div>

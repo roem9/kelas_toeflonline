@@ -156,7 +156,11 @@
                                     <?php endif;?>
                                     
                                     <?php if($pertemuan_kelas['selesai'] == "Belum Selesai") :?>
-                                        <a href="<?= base_url()?>kelas/tandai_selesai/<?= $kelas['id_kelas']?>/<?= md5($pertemuan['id_pertemuan'])?>" class="btn btn-md btn-primary w-100 mb-3">Tandai Selesai</a>
+                                        <?php if($pertemuan_kelas['pertemuan_terakhir'] == "Tidak") :?>
+                                            <a href="<?= base_url()?>kelas/tandai_selesai/<?= $kelas['id_kelas']?>/<?= md5($pertemuan['id_pertemuan'])?>" class="btn btn-md btn-primary w-100 mb-3">Materi Berikutnya</a>
+                                        <?php else :?>
+                                            <a href="<?= base_url()?>kelas/tandai_selesai/<?= $kelas['id_kelas']?>/<?= md5($pertemuan['id_pertemuan'])?>" class="btn btn-md btn-primary w-100 mb-3">Klaim Sertifikat</a>
+                                        <?php endif;?>
                                     <?php endif;?>
                                 <?php endif;?>
                             <?php else :?>
@@ -202,7 +206,11 @@
                                     <?php endif;?>
                                     
                                     <?php if($pertemuan_kelas['selesai'] == "Belum Selesai") :?>
-                                        <a href="<?= base_url()?>kelas/tandai_selesai/<?= $kelas['id_kelas']?>/<?= md5($pertemuan['id_pertemuan'])?>" class="btn btn-md btn-primary w-100 mb-3">Tandai Selesai</a>
+                                        <?php if($pertemuan_kelas['pertemuan_terakhir'] == "Tidak") :?>
+                                            <a href="<?= base_url()?>kelas/tandai_selesai/<?= $kelas['id_kelas']?>/<?= md5($pertemuan['id_pertemuan'])?>" class="btn btn-md btn-primary w-100 mb-3">Materi Berikutnya</a>
+                                        <?php else :?>
+                                            <a href="<?= base_url()?>kelas/tandai_selesai/<?= $kelas['id_kelas']?>/<?= md5($pertemuan['id_pertemuan'])?>" class="btn btn-md btn-primary w-100 mb-3">Klaim Sertifikat</a>
+                                        <?php endif;?>
                                     <?php endif;?>
                                 <?php endif;?>
                             <?php endif;?>

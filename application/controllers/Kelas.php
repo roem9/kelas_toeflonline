@@ -1006,17 +1006,32 @@ class Kelas extends MY_Controller {
         ]);
 
         $pertemuan_selanjutnya = $this->kelas->get_one("pertemuan", ["id_program" => $pertemuan['id_program'], "urutan" => $pertemuan['urutan']+1]);
+        $pertemuan_terakhir = $this->kelas->get_one("pertemuan", ["id_program" => $pertemuan['id_program'], "urutan" => $pertemuan['urutan']+2]);
 
         if($pertemuan_selanjutnya){
-            $this->kelas->add_data("pertemuan_kelas_member",[
-                "id_kelas" => $id_kelas,
-                "id_pertemuan" => $pertemuan_selanjutnya['id_pertemuan'],
-                "id_member" => $id_member,
-                "selesai" => "Belum Selesai"
-            ]);
+            if(empty($pertemuan_terakhir)){
+                $this->kelas->add_data("pertemuan_kelas_member",[
+                    "id_kelas" => $id_kelas,
+                    "id_pertemuan" => $pertemuan_selanjutnya['id_pertemuan'],
+                    "id_member" => $id_member,
+                    "selesai" => "Belum Selesai",
+                    "pertemuan_terakhir" => "Ya"
+                ]);
+            } else {
+                $this->kelas->add_data("pertemuan_kelas_member",[
+                    "id_kelas" => $id_kelas,
+                    "id_pertemuan" => $pertemuan_selanjutnya['id_pertemuan'],
+                    "id_member" => $id_member,
+                    "selesai" => "Belum Selesai",
+                    "pertemuan_terakhir" => "Tidak"
+                ]);
+            }
+
+            $this->pertemuan(md5($id_kelas), md5($pertemuan_selanjutnya['id_pertemuan']));
+        } else {
+            $this->id(md5($id_kelas));
         }
 
-        $this->pertemuan(md5($id_kelas), $id_pertemuan);
 
     }
 
