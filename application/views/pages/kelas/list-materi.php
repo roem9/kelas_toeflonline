@@ -58,18 +58,10 @@
                                 $image++;
                             ?><?php elseif($materi['item'] == "video") :
                                 $item = '
-                                    <div class="d-flex justify-content-center">
-                                        <div class="embed-responsive embed-responsive-16by9">
-                                            <iframe class="embed-responsive-item" src="'.$materi["data"].'" allowfullscreen></iframe>
-                                        </div>
-                                    </div>'
+                                    <div id="player-youtube" data-plyr-provider="youtube" data-plyr-embed-id="'.$materi['data'].'"></div>'
                             ?><?php elseif($materi['item'] == "video pembahasan") :
                                 $item = '
-                                    <div class="d-flex justify-content-center">
-                                        <div class="embed-responsive embed-responsive-16by9">
-                                            <iframe class="embed-responsive-item" src="'.$materi["data"].'" allowfullscreen></iframe>
-                                        </div>
-                                    </div>'
+                                    <div id="player-youtube" data-plyr-provider="youtube" data-plyr-embed-id="'.$materi['data'].'"></div>'
                             ?><?php endif;?>
                             <div class="card mb-3">
                                 <div class="card-body">

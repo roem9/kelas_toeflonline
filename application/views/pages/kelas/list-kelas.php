@@ -21,7 +21,7 @@
                     <input type="search" name="search" class="form-control d-inline-block mb-3" placeholder="Cari kelas ..."/>
                     
                     <div id="dataAjax"></div>
-                    
+
                 </div>
 
             </div>

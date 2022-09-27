@@ -52,6 +52,8 @@
     <!-- clipboard  -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.4/clipboard.min.js"></script>
 
+    <!-- player  -->
+    <link href="<?= base_url()?>assets/player/plyr.css" rel="stylesheet"/>
 
     <script> var url_base = "<?= base_url()?>"; </script>
     <script> var level = "<?= $this->session->userdata('level')?>"; </script>
