@@ -125,10 +125,10 @@
                                                     $item = '<div dir="ltr" class="mb-3">'.$data['data'].'</div>';
                                                 }?>
                                         <?php elseif($data['item'] == "audio") :
-                                            $item = '<center><audio controls controlsList="nodownload"><source src="../../../../'.$folder_admin['value'].'/assets/media/'.$data['data'].'?t='.time().'" type="audio/mpeg"></audio></center>';
+                                            $item = '<center><audio controls controlsList="nodownload"><source src="'.$web_admin['value'].'/assets/media/'.$data['data'].'?t='.time().'" type="audio/mpeg"></audio></center>';
                                         ?>
                                         <?php elseif($data['item'] == "gambar") :
-                                            $item = '<img data-enlargeable src="../../../../'.$folder_admin['value'].'/assets/media/'.$data["data"].'" onerror="this.onerror=null; this.src=\''.base_url().'assets/tabler-icons-1.39.1/icons/x.svg\'" class="img-fluid" height="auto" width="100%">';
+                                            $item = '<img data-enlargeable src="'.$web_admin['value'].'/assets/media/'.$data["data"].'" onerror="this.onerror=null; this.src=\''.base_url().'assets/tabler-icons-1.39.1/icons/x.svg\'" class="img-fluid" height="auto" width="100%">';
                                         ?>
                                         <?php endif;?>
                                         <div class="shadow card mb-3 soal <?= $background;?>">
