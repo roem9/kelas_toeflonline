@@ -81,6 +81,7 @@ class Kelas extends MY_Controller {
         $data['pertemuan'] = $pertemuan;
 
         $data['web_admin'] = $this->kelas->get_one("config", ["field" => "web_admin"]);
+        $data['folder_admin'] = $this->kelas->get_one("config", ["field" => "folder_admin"]);
         $id_member = $this->session->userdata("id_member");
         
         // latihan koreksi otomatis 
